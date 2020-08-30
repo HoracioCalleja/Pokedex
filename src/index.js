@@ -1,6 +1,6 @@
-import { printPokemons, setPokemonCounter } from "./ui.js";
-import { getPokemonsApiData, getPokemons } from "./pokemons.js";
-import { setPaginator, setPages, activeItemPage } from "./paginator.js";
+import { printPokemons, setPokemonCounter, updateUi} from "./ui/ui.js";
+import {setPreviousAndNextPage, setPages, activeItemPage} from "./ui/paginator.js";
+import { getPokemonsApiData, getPokemons } from "./pokemons/pokemons.js";
 
 const d = document;
 
@@ -18,17 +18,20 @@ async function initialize(url) {
   
   setPokemonCounter(await pokemonAPIdata);
   
-  setPaginator( pokemonAPIdata.previousPage, pokemonAPIdata.nextPage);
+  setPreviousAndNextPage( pokemonAPIdata.previousPage, pokemonAPIdata.nextPage);
 
   const pokemons = await getPokemons(pokemonAPIdata);
 
   printPokemons(await pokemons);
 }
 
-async function updatePokemons(url){
+async function updatePokemonsList(url){
+  
+  updateUi();
+  
   const pokemonAPIdata = await getPokemonsApiData(url);
 
-  setPaginator( pokemonAPIdata.previousPage, pokemonAPIdata.nextPage);
+  setPreviousAndNextPage( pokemonAPIdata.previousPage, pokemonAPIdata.nextPage);
 
   const pokemons = await getPokemons(pokemonAPIdata);
 
@@ -39,7 +42,7 @@ async function updatePokemons(url){
 d.addEventListener("click", (e) => {
   
   if (e.target.matches(".page-link")) {
-    updatePokemons(e.target.dataset.url 
+    updatePokemonsList(e.target.dataset.url 
         || e.target.dataset.next 
         || e.target.dataset.previous);
       activeItemPage(e.target.dataset.url 
