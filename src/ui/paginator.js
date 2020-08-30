@@ -1,4 +1,4 @@
-export const $next = document.querySelector(".next"),
+const $next = document.querySelector(".next"),
   $previous = document.querySelector(".previous"),
   $ul = document.querySelector(".pagination");
 

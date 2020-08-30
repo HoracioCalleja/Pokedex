@@ -1,7 +1,8 @@
-import Pokemon from "../../classes/pokemon.js";
+
 import pokemonsApiData from "../../classes/pokemonsData.js";
 import { checkLocalStorage } from "../storage/storage.js";
 import { fetchData } from "../fetch/fetch_module.js";
+import { mapPokemon } from "../maper/maper.js";
 
 export async function getPokemonsApiData(url) {
   let pokemonsData;
@@ -50,35 +51,3 @@ export async function getPokemons(pokemonsApiData) {
   );
   return pokemons;
 }
-
-  /**
-   *
-   * @param {Object} pokemonApiData
-   * @returns {Pokemon} 
-   */
-
-  async function mapPokemon(pokemonApiData) {
-    const {
-      id,
-      name,
-      height,
-      weight,
-      abilities,
-      sprites,
-      types,
-      stats,
-    } = await pokemonApiData;
-
-    return new Pokemon(
-      id,
-      name,
-      height,
-      weight,
-      abilities.map((item) => item.ability.name),
-      sprites.front_default || sprites.front_shiny || sprites.back_female,
-      sprites.back_default || sprites.back_shiny || sprites.back_female,
-      stats[0].base_stat,
-      types.map((item) => item.type.name)
-    );
-  }
-
