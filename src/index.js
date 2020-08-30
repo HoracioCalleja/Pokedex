@@ -1,4 +1,4 @@
-import { printPokemons, setPokemonCounter, updateUi} from "./ui/pokemons.js";
+import { printPokemons, setPokemonCounter, loader} from "./ui/pokemons.js";
 import {setPreviousAndNextPage, setPages, activeItemPage} from "./ui/paginator.js";
 import { getPokemonsApiData, getPokemons } from "./pokemons/pokemons.js";
 
@@ -27,7 +27,7 @@ async function initialize(url) {
 
 async function updatePokemonsList(url){
   
-  updateUi();
+  loader();
   
   const pokemonAPIdata = await getPokemonsApiData(url);
 

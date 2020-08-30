@@ -52,7 +52,7 @@ export async function setPokemonCounter(apiData) {
   $pokemonsCount.textContent = `There are ${count} Pokemon's`;
 }
 
-export function updateUi() {
+export function loader() {
   $pokemonsContainer.innerHTML =
-    "<div class='col-12'> <h3>Cargando...</h3> </div>";
+    "<div class='col-12'> <h3>Loading...</h3> </div>";
 }

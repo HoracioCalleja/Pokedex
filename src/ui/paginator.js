@@ -17,7 +17,7 @@ export async function setPages(pokemonApiData) {
     $a.href = "#";
     $a.textContent = i + 1;
     if (i > 0) {
-      offsetCounter += +12;
+      offsetCounter += 12;
     } else {
       $li.classList.add("active");
     }
