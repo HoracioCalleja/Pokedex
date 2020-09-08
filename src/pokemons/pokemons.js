@@ -1,7 +1,7 @@
 
 import pokemonsApiData from "../../classes/pokemonsData.js";
 import { checkLocalStorage } from "../storage/storage.js";
-import { fetchData } from "../fetch/fetch_module.js";
+import { fetchData } from "../fetch/fetch_service.js";
 import { mapPokemon } from "../maper/maper.js";
 
 export async function getPokemonsApiData(url) {
